@@ -112,6 +112,22 @@
     </footer>
 
     <script>
+        // SMART SEARCH LOGIC
+        const searchBox = document.querySelector('input[type="text"]');
+        const cards = document.querySelectorAll('.card-reveal');
+
+        searchBox.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            cards.forEach(card => {
+                const cardText = card.innerText.toLowerCase();
+                if (cardText.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
         // DARK MODE TOGGLE
         const toggle = document.getElementById('theme-toggle');
         toggle.addEventListener('click', () => {
