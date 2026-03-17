@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Padh.ai</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>tailwind.config = { darkMode: 'class' }</script>
+</head>
+<body class="bg-slate-50 dark:bg-[#0f172a] text-slate-900 dark:text-slate-100 transition-colors duration-500">
+
+    <nav class="fixed w-full z-50 backdrop-blur-lg border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-black tracking-tighter">padh<span class="text-blue-500">.ai</span></a>
+            <div class="flex items-center space-x-8 font-medium">
+                <a href="index.html" class="hover:text-blue-500 transition">Home</a>
+                <a href="about.html" class="text-blue-500">About</a>
+                <a href="contact.html" class="hover:text-blue-500 transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-48 pb-20 px-6 max-w-4xl mx-auto">
+        <div class="reveal">
+            <h1 class="text-5xl font-black mb-8">The Mission</h1>
+            <p class="text-xl text-slate-500 dark:text-slate-400 leading-relaxed mb-6">
+                Padh.ai was born out of a simple necessity: <span class="text-slate-900 dark:text-white font-bold">Access.</span> 
+            </p>
+            <p class="text-lg text-slate-500 dark:text-slate-400 leading-relaxed mb-12">
+                As a student at JNTUH, I realized that study materials and previous year questions were scattered, hidden behind ads, or locked in slow-loading portals. This site is a clean, advanced, and free alternative designed to help every student excel.
+            </p>
+            <div class="p-8 rounded-[32px] bg-blue-500 text-white shadow-2xl shadow-blue-500/20">
+                <h2 class="text-2xl font-bold mb-2">Armaan Singh</h2>
+                <p class="opacity-80 uppercase tracking-widest text-sm font-bold">Founder & Lead Developer</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        ScrollReveal().reveal('.reveal', { distance: '50px', duration: 1000, easing: 'ease-out' });
+    </script>
+</body>
+</html>
