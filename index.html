@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Padhai | R25</title>
+    <title>Padhai | Surviving R25</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,171 +33,187 @@
             overflow-x: hidden; 
         }
         
-        /* Subtle OLED Glows */
+        /* Vibrant Background Glow Orbs */
         .glow-orb { 
             position: absolute; 
             border-radius: 50%; 
-            filter: blur(150px); 
+            filter: blur(140px); 
             z-index: -1; 
-            opacity: 0.3; 
+            opacity: 0.4; 
+            animation: pulse-slow 8s infinite alternate;
         }
-        .orb-1 { top: -5%; left: -5%; width: 40vw; height: 40vw; background: rgba(0, 150, 255, 0.15); }
-        .orb-2 { bottom: 10%; right: -5%; width: 35vw; height: 35vw; background: rgba(150, 0, 255, 0.1); }
-        .orb-3 { top: 40%; left: 30%; width: 30vw; height: 30vw; background: rgba(0, 255, 150, 0.05); }
+        .orb-1 { top: -5%; left: -10%; width: 50vw; height: 50vw; background: rgba(0, 195, 255, 0.2); }
+        .orb-2 { top: 30%; right: -10%; width: 45vw; height: 45vw; background: rgba(255, 0, 128, 0.15); }
+        .orb-3 { bottom: -10%; left: 20%; width: 60vw; height: 60vw; background: rgba(111, 0, 255, 0.15); }
 
-        /* Snappy Reveal Animation */
+        @keyframes pulse-slow {
+            0% { transform: scale(1); opacity: 0.3; }
+            100% { transform: scale(1.1); opacity: 0.5; }
+        }
+
+        /* Apple Scrollytelling Animation (Blur + Translate + Scale) */
         .reveal { 
             opacity: 0; 
-            transform: translateY(40px) scale(0.98); 
-            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1); 
+            filter: blur(10px);
+            transform: translateY(60px) scale(0.95); 
+            transition: all 1s cubic-bezier(0.22, 1, 0.36, 1); 
         }
         .reveal.active { 
             opacity: 1; 
+            filter: blur(0px);
             transform: translateY(0) scale(1); 
         }
 
-        /* Apple-Style Frosted Glass */
+        /* Apple-Style Frosted Glass with Colorful Hover */
         .glass-card {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
         .glass-card:hover {
-            transform: translateY(-6px) scale(1.01);
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+            transform: translateY(-8px) scale(1.02);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255,255,255,0.1);
         }
         
         /* Smooth Icon Hover */
         .glass-card i { transition: transform 0.4s ease, color 0.4s ease; }
-        .glass-card:hover i.fa-google-drive { transform: scale(1.1); }
+        .glass-card:hover i.fa-google-drive { transform: scale(1.15) rotate(5deg); }
     </style>
 </head>
-<body class="relative min-h-screen antialiased selection:bg-white selection:text-black">
+<body class="relative min-h-screen antialiased selection:bg-fuchsia-500 selection:text-white">
 
     <div class="glow-orb orb-1"></div>
     <div class="glow-orb orb-2"></div>
     <div class="glow-orb orb-3"></div>
 
-    <nav class="fixed w-full z-50 top-0 border-b border-white/[0.08] bg-black/60 backdrop-blur-xl supports-[backdrop-filter]:bg-black/40">
+    <nav class="fixed w-full z-50 top-0 border-b border-white/[0.05] bg-black/50 backdrop-blur-xl supports-[backdrop-filter]:bg-black/30">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity">
-                <i class="fas fa-layer-group text-white text-2xl"></i>
-                <span class="font-bold tracking-tight text-xl text-white">Padhai</span>
+                <i class="fas fa-layer-group text-fuchsia-400 text-2xl drop-shadow-[0_0_10px_rgba(217,70,239,0.5)]"></i>
+                <span class="font-bold tracking-tight text-xl text-white">Padhai <span class="text-fuchsia-400">✨</span></span>
             </div>
-            <a href="#about" class="text-sm font-semibold text-zinc-300 bg-white/5 hover:bg-white/10 hover:text-white border border-white/10 px-5 py-2.5 rounded-full backdrop-blur-md transition-all duration-300 flex items-center gap-2 shadow-lg shadow-black/20">
-                <i class="fas fa-info-circle text-xs opacity-70"></i>
-                About & Setup
-            </a>
+            
+            <div class="flex gap-3">
+                <a href="about.html" class="text-sm font-semibold text-zinc-300 hover:text-white px-4 py-2 rounded-full transition-all duration-300 flex items-center gap-2 hover:bg-white/10">
+                    <i class="fas fa-rocket text-xs opacity-70"></i> About
+                </a>
+                <a href="contact.html" class="text-sm font-semibold text-zinc-300 bg-white/10 hover:bg-white/20 hover:text-white border border-white/10 px-5 py-2 rounded-full backdrop-blur-md transition-all duration-300 flex items-center gap-2 shadow-lg shadow-black/20">
+                    <i class="fas fa-envelope text-xs opacity-70"></i> Contact
+                </a>
+            </div>
         </div>
     </nav>
 
     <main class="max-w-7xl mx-auto px-6 pt-40 pb-32">
         
         <header class="mb-28 text-center reveal">
+            <div class="inline-block mb-4 px-4 py-1.5 rounded-full border border-fuchsia-500/30 bg-fuchsia-500/10 text-fuchsia-300 text-sm font-semibold tracking-wide backdrop-blur-md">
+                🚨 R25 Survival Kit Active
+            </div>
             <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter mb-8 bg-clip-text text-transparent bg-gradient-to-br from-white via-zinc-200 to-zinc-600 drop-shadow-sm">
-                Academic Hub.
+                The Academic Hub. 🧠
             </h1>
             <p class="text-zinc-400 text-lg md:text-2xl max-w-3xl mx-auto font-light leading-relaxed">
-                Curated lecture notes, lab records, and official PYQs.<br class="hidden md:block"> Streamlined strictly for R25.
+                Curated lecture notes, lab records, and official PYQs so you don't have to scramble at 2 AM before the exam. <br class="hidden md:block"> You're welcome. 🤝
             </p>
         </header>
 
         <section class="mb-24">
             <div class="flex items-center gap-6 mb-10 reveal">
-                <h2 class="text-3xl font-bold tracking-tight text-white">Semester 1</h2>
+                <h2 class="text-3xl font-bold tracking-tight text-white">Semester 1 👶</h2>
                 <div class="h-[1px] flex-grow bg-gradient-to-r from-white/20 to-transparent"></div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <a href="https://drive.google.com/drive/folders/1gU9GOdfYckfnjVCTUc8zyqJC077_K5Gu?usp=drive_link" target="_blank" class="glass-card rounded-3xl p-7 group reveal">
-                    <div class="flex justify-between items-start mb-6 text-white">
-                        <div class="p-3 bg-white/10 rounded-2xl group-hover:bg-white group-hover:text-black transition-colors duration-300">
+                    <div class="flex justify-between items-start mb-6 text-blue-400">
+                        <div class="w-12 h-12 flex items-center justify-center bg-blue-500/10 border border-blue-500/20 rounded-2xl group-hover:bg-blue-500 group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
                             <i class="fas fa-superscript text-xl"></i>
                         </div>
-                        <i class="fab fa-google-drive opacity-40 group-hover:opacity-100 group-hover:text-emerald-400 transition-all text-xl mt-2"></i>
+                        <i class="fab fa-google-drive opacity-40 group-hover:opacity-100 group-hover:text-blue-400 transition-all text-xl mt-2"></i>
                     </div>
-                    <h3 class="font-bold text-xl mb-1 text-white">Mathematics (M1)</h3>
+                    <h3 class="font-bold text-xl mb-1 text-white">Maths (M1) 📐</h3>
                     <p class="text-sm text-zinc-400">Matrices & Calculus</p>
                 </a>
 
                 <a href="https://drive.google.com/drive/folders/1u6Z9AzG9wF1KJOr6ywKXWGHic9PWgh-5?usp=drive_link" target="_blank" class="glass-card rounded-3xl p-7 group reveal">
-                    <div class="flex justify-between items-start mb-6 text-white">
-                        <div class="p-3 bg-white/10 rounded-2xl group-hover:bg-white group-hover:text-black transition-colors duration-300">
+                    <div class="flex justify-between items-start mb-6 text-purple-400">
+                        <div class="w-12 h-12 flex items-center justify-center bg-purple-500/10 border border-purple-500/20 rounded-2xl group-hover:bg-purple-500 group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(168,85,247,0.2)]">
                             <i class="fas fa-atom text-xl"></i>
                         </div>
-                        <i class="fab fa-google-drive opacity-40 group-hover:opacity-100 group-hover:text-emerald-400 transition-all text-xl mt-2"></i>
+                        <i class="fab fa-google-drive opacity-40 group-hover:opacity-100 group-hover:text-purple-400 transition-all text-xl mt-2"></i>
                     </div>
-                    <h3 class="font-bold text-xl mb-1 text-white">Eng Physics</h3>
+                    <h3 class="font-bold text-xl mb-1 text-white">Eng Physics ⚛️</h3>
                     <p class="text-sm text-zinc-400">Materials & Mechanics</p>
                 </a>
 
                 <a href="https://drive.google.com/drive/folders/1nyW95NqvAsuvba3Be9YeJ9mAlt0hnAUJ?usp=sharing" target="_blank" class="glass-card rounded-3xl p-7 group reveal">
-                    <div class="flex justify-between items-start mb-6 text-white">
-                        <div class="p-3 bg-white/10 rounded-2xl group-hover:bg-white group-hover:text-black transition-colors duration-300">
+                    <div class="flex justify-between items-start mb-6 text-emerald-400">
+                        <div class="w-12 h-12 flex items-center justify-center bg-emerald-500/10 border border-emerald-500/20 rounded-2xl group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(16,185,129,0.2)]">
                             <i class="fas fa-flask text-xl"></i>
                         </div>
                         <i class="fab fa-google-drive opacity-40 group-hover:opacity-100 group-hover:text-emerald-400 transition-all text-xl mt-2"></i>
                     </div>
-                    <h3 class="font-bold text-xl mb-1 text-white">Applied Chem</h3>
+                    <h3 class="font-bold text-xl mb-1 text-white">Applied Chem 🧪</h3>
                     <p class="text-sm text-zinc-400">Engineering Chemistry</p>
                 </a>
 
                 <a href="https://drive.google.com/drive/folders/1BGORyS4FZ1ZxUlEOwkhI0PtaK77ZTmFP?usp=drive_link" target="_blank" class="glass-card rounded-3xl p-7 group reveal">
-                    <div class="flex justify-between items-start mb-6 text-white">
-                        <div class="p-3 bg-white/10 rounded-2xl group-hover:bg-white group-hover:text-black transition-colors duration-300">
+                    <div class="flex justify-between items-start mb-6 text-amber-400">
+                        <div class="w-12 h-12 flex items-center justify-center bg-amber-500/10 border border-amber-500/20 rounded-2xl group-hover:bg-amber-500 group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(245,158,11,0.2)]">
                             <i class="fas fa-microchip text-xl"></i>
                         </div>
-                        <i class="fab fa-google-drive opacity-40 group-hover:opacity-100 group-hover:text-emerald-400 transition-all text-xl mt-2"></i>
+                        <i class="fab fa-google-drive opacity-40 group-hover:opacity-100 group-hover:text-amber-400 transition-all text-xl mt-2"></i>
                     </div>
-                    <h3 class="font-bold text-xl mb-1 text-white">EDC</h3>
+                    <h3 class="font-bold text-xl mb-1 text-white">EDC 🔌</h3>
                     <p class="text-sm text-zinc-400">Electronic Devices</p>
                 </a>
 
                 <a href="https://drive.google.com/drive/folders/1XHPv33MUlCrCHVPWwBP13Md-1MihH6-i?usp=drive_link" target="_blank" class="glass-card rounded-3xl p-7 group reveal">
-                    <div class="flex justify-between items-start mb-6 text-white">
-                        <div class="p-3 bg-white/10 rounded-2xl group-hover:bg-white group-hover:text-black transition-colors duration-300">
+                    <div class="flex justify-between items-start mb-6 text-rose-400">
+                        <div class="w-12 h-12 flex items-center justify-center bg-rose-500/10 border border-rose-500/20 rounded-2xl group-hover:bg-rose-500 group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(244,63,94,0.2)]">
                             <i class="fas fa-cogs text-xl"></i>
                         </div>
-                        <i class="fab fa-google-drive opacity-40 group-hover:opacity-100 group-hover:text-emerald-400 transition-all text-xl mt-2"></i>
+                        <i class="fab fa-google-drive opacity-40 group-hover:opacity-100 group-hover:text-rose-400 transition-all text-xl mt-2"></i>
                     </div>
-                    <h3 class="font-bold text-xl mb-1 text-white">Classical Mech</h3>
+                    <h3 class="font-bold text-xl mb-1 text-white">Class. Mech ⚙️</h3>
                     <p class="text-sm text-zinc-400">Statics & Dynamics</p>
                 </a>
 
-                <div class="rounded-3xl p-7 border border-white/[0.03] bg-white/[0.02] opacity-50 reveal">
+                <div class="rounded-3xl p-7 border border-white/[0.03] bg-white/[0.02] opacity-50 reveal grayscale hover:grayscale-0 transition-all duration-500">
                     <div class="flex justify-between items-start mb-6 text-zinc-500">
-                        <div class="p-3 bg-black/50 rounded-2xl border border-white/5">
+                        <div class="w-12 h-12 flex items-center justify-center bg-black/50 rounded-2xl border border-white/5">
                             <i class="fas fa-bolt text-xl"></i>
                         </div>
                         <i class="fas fa-lock text-sm mt-3"></i>
                     </div>
-                    <h3 class="font-bold text-xl mb-1 text-zinc-400">Basic EEE</h3>
+                    <h3 class="font-bold text-xl mb-1 text-zinc-400">Basic EEE ⚡</h3>
                     <p class="text-sm text-zinc-600">Coming Soon</p>
                 </div>
 
-                <div class="rounded-3xl p-7 border border-white/[0.03] bg-white/[0.02] opacity-50 reveal">
+                <div class="rounded-3xl p-7 border border-white/[0.03] bg-white/[0.02] opacity-50 reveal grayscale hover:grayscale-0 transition-all duration-500">
                     <div class="flex justify-between items-start mb-6 text-zinc-500">
-                        <div class="p-3 bg-black/50 rounded-2xl border border-white/5">
+                        <div class="w-12 h-12 flex items-center justify-center bg-black/50 rounded-2xl border border-white/5">
                             <i class="fas fa-code text-xl"></i>
                         </div>
                         <i class="fas fa-lock text-sm mt-3"></i>
                     </div>
-                    <h3 class="font-bold text-xl mb-1 text-zinc-400">C Programming</h3>
+                    <h3 class="font-bold text-xl mb-1 text-zinc-400">C Prog 💻</h3>
                     <p class="text-sm text-zinc-600">Coming Soon</p>
                 </div>
 
-                <div class="rounded-3xl p-7 border border-white/[0.03] bg-white/[0.02] opacity-50 reveal">
+                <div class="rounded-3xl p-7 border border-white/[0.03] bg-white/[0.02] opacity-50 reveal grayscale hover:grayscale-0 transition-all duration-500">
                     <div class="flex justify-between items-start mb-6 text-zinc-500">
-                        <div class="p-3 bg-black/50 rounded-2xl border border-white/5">
+                        <div class="w-12 h-12 flex items-center justify-center bg-black/50 rounded-2xl border border-white/5">
                             <i class="fas fa-language text-xl"></i>
                         </div>
                         <i class="fas fa-lock text-sm mt-3"></i>
                     </div>
-                    <h3 class="font-bold text-xl mb-1 text-zinc-400">English</h3>
+                    <h3 class="font-bold text-xl mb-1 text-zinc-400">English ✍️</h3>
                     <p class="text-sm text-zinc-600">Coming Soon</p>
                 </div>
             </div>
@@ -205,85 +221,85 @@
 
         <section class="mb-24">
             <div class="flex items-center gap-6 mb-10 reveal">
-                <h2 class="text-3xl font-bold tracking-tight text-white">Semester 2</h2>
+                <h2 class="text-3xl font-bold tracking-tight text-white">Semester 2 💀</h2>
                 <div class="h-[1px] flex-grow bg-gradient-to-r from-white/20 to-transparent"></div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <a href="https://drive.google.com/drive/folders/11eQhVodrv6Gkz8bpFgyyYLDKZk8rOiIr?usp=drive_link" target="_blank" class="glass-card rounded-3xl p-7 group reveal">
-                    <div class="flex justify-between items-start mb-6 text-purple-300">
-                        <div class="p-3 bg-purple-500/10 rounded-2xl group-hover:bg-purple-400 group-hover:text-black transition-colors duration-300">
+                    <div class="flex justify-between items-start mb-6 text-cyan-400">
+                        <div class="w-12 h-12 flex items-center justify-center bg-cyan-500/10 border border-cyan-500/20 rounded-2xl group-hover:bg-cyan-500 group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(34,211,238,0.2)]">
                             <i class="fas fa-wave-square text-xl"></i>
                         </div>
-                        <i class="fab fa-google-drive opacity-40 group-hover:opacity-100 group-hover:text-emerald-400 transition-all text-xl mt-2 text-white"></i>
+                        <i class="fab fa-google-drive opacity-40 group-hover:opacity-100 group-hover:text-cyan-400 transition-all text-xl mt-2"></i>
                     </div>
-                    <h3 class="font-bold text-xl mb-1 text-white">Maths (ODVEC)</h3>
+                    <h3 class="font-bold text-xl mb-1 text-white">Maths (ODVEC) 📈</h3>
                     <p class="text-sm text-zinc-400">ODEs & Vector Calc</p>
                 </a>
 
                 <a href="https://drive.google.com/drive/folders/1u6Z9AzG9wF1KJOr6ywKXWGHic9PWgh-5?usp=drive_link" target="_blank" class="glass-card rounded-3xl p-7 group reveal">
-                    <div class="flex justify-between items-start mb-6 text-purple-300">
-                        <div class="p-3 bg-purple-500/10 rounded-2xl group-hover:bg-purple-400 group-hover:text-black transition-colors duration-300">
+                    <div class="flex justify-between items-start mb-6 text-purple-400">
+                        <div class="w-12 h-12 flex items-center justify-center bg-purple-500/10 border border-purple-500/20 rounded-2xl group-hover:bg-purple-500 group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(168,85,247,0.2)]">
                             <i class="fas fa-atom text-xl"></i>
                         </div>
-                        <i class="fab fa-google-drive opacity-40 group-hover:opacity-100 group-hover:text-emerald-400 transition-all text-xl mt-2 text-white"></i>
+                        <i class="fab fa-google-drive opacity-40 group-hover:opacity-100 group-hover:text-purple-400 transition-all text-xl mt-2"></i>
                     </div>
-                    <h3 class="font-bold text-xl mb-1 text-white">Eng Physics</h3>
+                    <h3 class="font-bold text-xl mb-1 text-white">Eng Physics ⚛️</h3>
                     <p class="text-sm text-zinc-400">Materials & Mechanics</p>
                 </a>
 
                 <a href="https://drive.google.com/drive/folders/1nyW95NqvAsuvba3Be9YeJ9mAlt0hnAUJ?usp=sharing" target="_blank" class="glass-card rounded-3xl p-7 group reveal">
-                    <div class="flex justify-between items-start mb-6 text-purple-300">
-                        <div class="p-3 bg-purple-500/10 rounded-2xl group-hover:bg-purple-400 group-hover:text-black transition-colors duration-300">
+                    <div class="flex justify-between items-start mb-6 text-emerald-400">
+                        <div class="w-12 h-12 flex items-center justify-center bg-emerald-500/10 border border-emerald-500/20 rounded-2xl group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(16,185,129,0.2)]">
                             <i class="fas fa-flask text-xl"></i>
                         </div>
-                        <i class="fab fa-google-drive opacity-40 group-hover:opacity-100 group-hover:text-emerald-400 transition-all text-xl mt-2 text-white"></i>
+                        <i class="fab fa-google-drive opacity-40 group-hover:opacity-100 group-hover:text-emerald-400 transition-all text-xl mt-2"></i>
                     </div>
-                    <h3 class="font-bold text-xl mb-1 text-white">Applied Chem</h3>
+                    <h3 class="font-bold text-xl mb-1 text-white">Applied Chem 🧪</h3>
                     <p class="text-sm text-zinc-400">Engineering Chemistry</p>
                 </a>
 
                 <a href="https://drive.google.com/drive/folders/1BGORyS4FZ1ZxUlEOwkhI0PtaK77ZTmFP?usp=drive_link" target="_blank" class="glass-card rounded-3xl p-7 group reveal">
-                    <div class="flex justify-between items-start mb-6 text-purple-300">
-                        <div class="p-3 bg-purple-500/10 rounded-2xl group-hover:bg-purple-400 group-hover:text-black transition-colors duration-300">
+                    <div class="flex justify-between items-start mb-6 text-amber-400">
+                        <div class="w-12 h-12 flex items-center justify-center bg-amber-500/10 border border-amber-500/20 rounded-2xl group-hover:bg-amber-500 group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(245,158,11,0.2)]">
                             <i class="fas fa-microchip text-xl"></i>
                         </div>
-                        <i class="fab fa-google-drive opacity-40 group-hover:opacity-100 group-hover:text-emerald-400 transition-all text-xl mt-2 text-white"></i>
+                        <i class="fab fa-google-drive opacity-40 group-hover:opacity-100 group-hover:text-amber-400 transition-all text-xl mt-2"></i>
                     </div>
-                    <h3 class="font-bold text-xl mb-1 text-white">EDC</h3>
+                    <h3 class="font-bold text-xl mb-1 text-white">EDC 🔌</h3>
                     <p class="text-sm text-zinc-400">Electronic Devices</p>
                 </a>
 
                 <a href="https://drive.google.com/drive/folders/1XHPv33MUlCrCHVPWwBP13Md-1MihH6-i?usp=drive_link" target="_blank" class="glass-card rounded-3xl p-7 group reveal">
-                    <div class="flex justify-between items-start mb-6 text-purple-300">
-                        <div class="p-3 bg-purple-500/10 rounded-2xl group-hover:bg-purple-400 group-hover:text-black transition-colors duration-300">
+                    <div class="flex justify-between items-start mb-6 text-rose-400">
+                        <div class="w-12 h-12 flex items-center justify-center bg-rose-500/10 border border-rose-500/20 rounded-2xl group-hover:bg-rose-500 group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(244,63,94,0.2)]">
                             <i class="fas fa-cogs text-xl"></i>
                         </div>
-                        <i class="fab fa-google-drive opacity-40 group-hover:opacity-100 group-hover:text-emerald-400 transition-all text-xl mt-2 text-white"></i>
+                        <i class="fab fa-google-drive opacity-40 group-hover:opacity-100 group-hover:text-rose-400 transition-all text-xl mt-2"></i>
                     </div>
-                    <h3 class="font-bold text-xl mb-1 text-white">Classical Mech</h3>
+                    <h3 class="font-bold text-xl mb-1 text-white">Class. Mech ⚙️</h3>
                     <p class="text-sm text-zinc-400">Statics & Dynamics</p>
                 </a>
 
-                <div class="rounded-3xl p-7 border border-white/[0.03] bg-white/[0.02] opacity-50 reveal">
+                <div class="rounded-3xl p-7 border border-white/[0.03] bg-white/[0.02] opacity-50 reveal grayscale hover:grayscale-0 transition-all duration-500">
                     <div class="flex justify-between items-start mb-6 text-zinc-500">
-                        <div class="p-3 bg-black/50 rounded-2xl border border-white/5">
+                        <div class="w-12 h-12 flex items-center justify-center bg-black/50 rounded-2xl border border-white/5">
                             <i class="fab fa-python text-xl"></i>
                         </div>
                         <i class="fas fa-lock text-sm mt-3"></i>
                     </div>
-                    <h3 class="font-bold text-xl mb-1 text-zinc-400">Python Prog</h3>
+                    <h3 class="font-bold text-xl mb-1 text-zinc-400">Python 🐍</h3>
                     <p class="text-sm text-zinc-600">Coming Soon</p>
                 </div>
 
-                <div class="rounded-3xl p-7 border border-white/[0.03] bg-white/[0.02] opacity-50 reveal">
+                <div class="rounded-3xl p-7 border border-white/[0.03] bg-white/[0.02] opacity-50 reveal grayscale hover:grayscale-0 transition-all duration-500">
                     <div class="flex justify-between items-start mb-6 text-zinc-500">
-                        <div class="p-3 bg-black/50 rounded-2xl border border-white/5">
+                        <div class="w-12 h-12 flex items-center justify-center bg-black/50 rounded-2xl border border-white/5">
                             <i class="fas fa-drafting-compass text-xl"></i>
                         </div>
                         <i class="fas fa-lock text-sm mt-3"></i>
                     </div>
-                    <h3 class="font-bold text-xl mb-1 text-zinc-400">Eng Drawing</h3>
+                    <h3 class="font-bold text-xl mb-1 text-zinc-400">Eng Drawing 📏</h3>
                     <p class="text-sm text-zinc-600">Coming Soon</p>
                 </div>
             </div>
@@ -291,73 +307,73 @@
 
         <section class="mb-24">
             <div class="flex items-center gap-6 mb-10 reveal">
-                <h2 class="text-3xl font-bold tracking-tight text-white">Records & Tests <span class="bg-white/10 text-zinc-300 text-sm py-1 px-3 rounded-full ml-2 align-middle font-semibold border border-white/10">R25</span></h2>
+                <h2 class="text-3xl font-bold tracking-tight text-white">The Vault 📂 <span class="bg-indigo-500/20 text-indigo-300 text-sm py-1 px-3 rounded-full ml-2 align-middle font-bold border border-indigo-500/30">Top Secret</span></h2>
                 <div class="h-[1px] flex-grow bg-gradient-to-r from-white/20 to-transparent"></div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <a href="https://drive.google.com/drive/folders/1jsDmR6SiLeW5jy8nzFYK3aAtQLWKFx2n?usp=drive_link" target="_blank" class="glass-card rounded-3xl p-8 group flex flex-col sm:flex-row items-start gap-6 reveal hover:border-emerald-500/30">
-                    <div class="w-16 h-16 rounded-2xl bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20 group-hover:bg-emerald-500 group-hover:text-black transition-colors duration-300">
-                        <i class="fas fa-book-open text-emerald-400 group-hover:text-black text-2xl transition-colors"></i>
+                <a href="https://drive.google.com/drive/folders/1jsDmR6SiLeW5jy8nzFYK3aAtQLWKFx2n?usp=drive_link" target="_blank" class="glass-card rounded-3xl p-8 group flex flex-col sm:flex-row items-start gap-6 reveal hover:border-indigo-500/40">
+                    <div class="w-16 h-16 rounded-2xl bg-indigo-500/10 flex items-center justify-center shrink-0 border border-indigo-500/30 group-hover:bg-indigo-500 group-hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(99,102,241,0.2)]">
+                        <i class="fas fa-book-open text-indigo-400 group-hover:text-white text-2xl transition-colors"></i>
                     </div>
                     <div>
-                        <h3 class="text-2xl font-bold mb-3 text-white">Lab Records</h3>
-                        <p class="text-zinc-400 text-sm leading-relaxed mb-5">Official laboratory records, manuals, and practical observation materials organized securely.</p>
-                        <span class="inline-flex items-center gap-2 text-sm font-bold text-emerald-400 tracking-wide">
-                            Access Drive <i class="fas fa-arrow-right group-hover:translate-x-1.5 transition-transform duration-300"></i>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Lab Records 📓</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed mb-5">Don't reinvent the wheel. Official laboratory records, manuals, and practical observations.</p>
+                        <span class="inline-flex items-center gap-2 text-sm font-bold text-indigo-400 tracking-wide group-hover:text-indigo-300">
+                            Steal these <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform duration-300"></i>
                         </span>
                     </div>
                 </a>
 
-                <a href="https://drive.google.com/drive/folders/1OaWUQAVcNnTc6GgYnC6DJmq7-HYMEeuo?usp=drive_link" target="_blank" class="glass-card rounded-3xl p-8 group flex flex-col sm:flex-row items-start gap-6 reveal hover:border-emerald-500/30">
-                    <div class="w-16 h-16 rounded-2xl bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20 group-hover:bg-emerald-500 group-hover:text-black transition-colors duration-300">
-                        <i class="fas fa-file-signature text-emerald-400 group-hover:text-black text-2xl transition-colors"></i>
+                <a href="https://drive.google.com/drive/folders/1OaWUQAVcNnTc6GgYnC6DJmq7-HYMEeuo?usp=drive_link" target="_blank" class="glass-card rounded-3xl p-8 group flex flex-col sm:flex-row items-start gap-6 reveal hover:border-pink-500/40">
+                    <div class="w-16 h-16 rounded-2xl bg-pink-500/10 flex items-center justify-center shrink-0 border border-pink-500/30 group-hover:bg-pink-500 group-hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(236,72,153,0.2)]">
+                        <i class="fas fa-file-signature text-pink-400 group-hover:text-white text-2xl transition-colors"></i>
                     </div>
                     <div>
-                        <h3 class="text-2xl font-bold mb-3 text-white">Internal Test Files</h3>
-                        <p class="text-zinc-400 text-sm leading-relaxed mb-5">R25 midterms, internal examination question papers, quizzes, and assignment questions.</p>
-                        <span class="inline-flex items-center gap-2 text-sm font-bold text-emerald-400 tracking-wide">
-                            Access Drive <i class="fas fa-arrow-right group-hover:translate-x-1.5 transition-transform duration-300"></i>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Internal Test Files 📝</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed mb-5">Midterms, quizzes, and assignment questions. Because we all know they repeat questions.</p>
+                        <span class="inline-flex items-center gap-2 text-sm font-bold text-pink-400 tracking-wide group-hover:text-pink-300">
+                            See the future <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform duration-300"></i>
                         </span>
                     </div>
                 </a>
             </div>
         </section>
 
-        <section id="about">
+        <section>
             <div class="flex items-center gap-6 mb-10 reveal">
-                <h2 class="text-3xl font-bold tracking-tight text-white">Question Papers <span class="bg-white/10 text-zinc-300 text-sm py-1 px-3 rounded-full ml-2 align-middle font-semibold border border-white/10">PYQs</span></h2>
+                <h2 class="text-3xl font-bold tracking-tight text-white">Previous Papers 📜</h2>
                 <div class="h-[1px] flex-grow bg-gradient-to-r from-white/20 to-transparent"></div>
             </div>
 
             <div class="grid grid-cols-1 gap-6 mb-6">
-                <div class="glass-card rounded-3xl p-8 reveal border-rose-500/20 hover:border-rose-500/40 relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-rose-500/10 rounded-full blur-3xl -mr-20 -mt-20 group-hover:bg-rose-500/20 transition-colors duration-500"></div>
+                <div class="glass-card rounded-3xl p-8 reveal border-green-500/20 hover:border-green-500/50 relative overflow-hidden group transition-all duration-500">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-green-500/10 rounded-full blur-3xl -mr-20 -mt-20 group-hover:bg-green-500/20 transition-colors duration-700"></div>
                     <div class="flex flex-col md:flex-row md:items-center justify-between gap-8 relative z-10">
                         <div class="flex-grow">
                             <div class="flex items-center gap-4 mb-3">
-                                <div class="w-12 h-12 rounded-xl bg-rose-500/10 flex items-center justify-center border border-rose-500/20">
-                                    <i class="fas fa-university text-rose-500 text-xl"></i>
+                                <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center border border-green-500/30 shadow-[0_0_15px_rgba(34,197,94,0.2)]">
+                                    <i class="fas fa-university text-green-400 text-xl"></i>
                                 </div>
                                 <h3 class="text-2xl font-bold text-white">Official JNTUH Test Series</h3>
                             </div>
                             <p class="text-zinc-400 text-sm md:text-base max-w-2xl leading-relaxed">
-                                Redirects to the official JNTUH OSS portal. Contains complete subject-wise and semester-wise previous question papers for <strong class="text-white font-semibold">R07 through R18</strong> regulations.
+                                Redirects to the holy grail (JNTUH OSS portal). Contains complete subject-wise and semester-wise PYQs from the stone age (<strong class="text-white font-semibold">R07 through R18</strong>).
                             </p>
                         </div>
-                        <a href="https://studentservices.jntuh.ac.in/oss/syllabus_action.html?type=previousQPapers&level=1.I-I&l123=2" target="_blank" class="shrink-0 bg-white text-black px-8 py-4 rounded-full font-bold hover:scale-105 hover:bg-rose-50 hover:text-rose-600 transition-all duration-300 flex items-center justify-center gap-3 shadow-xl shadow-white/10">
+                        <a href="https://studentservices.jntuh.ac.in/oss/syllabus_action.html?type=previousQPapers&level=1.I-I&l123=2" target="_blank" class="shrink-0 bg-white text-black px-8 py-4 rounded-full font-bold hover:scale-105 hover:bg-green-400 hover:text-black transition-all duration-300 flex items-center justify-center gap-3 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
                             Open Portal <i class="fas fa-external-link-alt text-sm"></i>
                         </a>
                     </div>
                 </div>
             </div>
 
-            <div class="rounded-3xl p-8 border border-dashed border-white/10 bg-white/[0.01] flex items-center justify-between reveal">
+            <div class="rounded-3xl p-8 border border-dashed border-white/10 bg-black/20 flex items-center justify-between reveal">
                 <div>
-                    <h4 class="font-bold text-zinc-300 text-lg mb-1">Senior Semesters (3-8)</h4>
-                    <p class="text-sm text-zinc-500">Locked for current academic year</p>
+                    <h4 class="font-bold text-zinc-300 text-lg mb-1">Senior Semesters (3-8) 🧓</h4>
+                    <p class="text-sm text-zinc-500">Locked until we actually survive the first year.</p>
                 </div>
-                <div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center">
+                <div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
                     <i class="fas fa-lock text-zinc-500 text-lg"></i>
                 </div>
             </div>
@@ -365,12 +381,12 @@
 
     </main>
 
-    <footer class="border-t border-white/[0.08] py-10 text-center mt-12 bg-black/60 backdrop-blur-xl">
+    <footer class="border-t border-white/[0.05] py-10 text-center mt-12 bg-black/50 backdrop-blur-xl">
         <div class="flex justify-center items-center gap-2 mb-2">
-            <i class="fas fa-layer-group text-white opacity-50 text-sm"></i>
-            <span class="font-bold text-white opacity-50 tracking-tight">Padhai</span>
+            <i class="fas fa-layer-group text-fuchsia-500 opacity-80 text-sm"></i>
+            <span class="font-bold text-white opacity-80 tracking-tight">Padhai</span>
         </div>
-        <p class="text-zinc-600 text-xs font-medium uppercase tracking-widest">Curated for excellence. Built for efficiency.</p>
+        <p class="text-zinc-500 text-xs font-medium uppercase tracking-widest mt-3">Curated to save GPAs. 🚀</p>
     </footer>
 
     <script>
@@ -380,18 +396,20 @@
             const revealOnScroll = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
+                        // Add active class to trigger CSS transitions
                         entry.target.classList.add('active');
+                        // Optional: Stop observing once revealed so it doesn't animate out and in constantly
                         observer.unobserve(entry.target);
                     }
                 });
             }, {
-                threshold: 0.1,
+                threshold: 0.15, // Trigger slightly later for a better scroll feel
                 rootMargin: "0px 0px -50px 0px"
             });
 
             reveals.forEach((element, index) => {
-                // Tighter staggered delay for grid items
-                element.style.transitionDelay = `${(index % 4) * 0.08}s`;
+                // Staggered delay for grid items so they flow in beautifully
+                element.style.transitionDelay = `${(index % 4) * 0.1}s`;
                 revealOnScroll.observe(element);
             });
         });
