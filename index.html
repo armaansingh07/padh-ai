@@ -3,356 +3,335 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Padh.ai | The Smart Vault</title>
+    <title>Engineering Vault | R25</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
-                    colors: { brand: '#3b82f6' },
-                    animation: { 'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite' }
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        tech: { 900: '#0a0a0c', 800: '#141417', 700: '#222226', accent: '#00f0ff' }
+                    }
                 }
             }
         }
     </script>
+
     <style>
-        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); }
-        .dark .glass { background: rgba(15, 23, 42, 0.7); border-color: rgba(51, 65, 85, 0.5); }
+        body { background-color: #0a0a0c; color: #f4f4f5; overflow-x: hidden; }
+        
+        /* Background Glow Orbs */
+        .glow-orb { position: absolute; border-radius: 50%; filter: blur(120px); z-index: -1; opacity: 0.4; }
+        .orb-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: rgba(0, 195, 255, 0.15); }
+        .orb-2 { bottom: 20%; right: -10%; width: 40vw; height: 40vw; background: rgba(111, 0, 255, 0.15); }
+
+        /* Scroll Reveal Animation */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Glass Card Effect */
+        .glass-card {
+            background: rgba(20, 20, 23, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            background: rgba(34, 34, 38, 0.8);
+            border-color: rgba(0, 240, 255, 0.3);
+            box-shadow: 0 20px 40px -10px rgba(0, 240, 255, 0.1);
+        }
     </style>
 </head>
-<body class="bg-slate-50 dark:bg-[#0f172a] text-slate-900 dark:text-slate-100 transition-colors duration-500">
+<body class="relative min-h-screen antialiased selection:bg-tech-accent selection:text-black">
 
-    <nav class="fixed w-full z-50 glass border-b border-slate-200 dark:border-slate-800 transition-all">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+
+    <nav class="fixed w-full z-50 top-0 border-b border-white/5 bg-tech-900/70 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-black tracking-tighter">padh<span class="text-brand">.ai</span></a>
-            <div class="hidden md:flex items-center space-x-8 font-medium">
-                <a href="index.html" class="text-brand">Home</a>
-                <a href="about.html" class="hover:text-brand transition">About</a>
-                <a href="contact.html" class="hover:text-brand transition">Contact</a>
-                <button id="theme-toggle" class="w-10 h-10 rounded-full flex items-center justify-center bg-slate-200 dark:bg-slate-800 transition-transform active:scale-90">
-                    <i class="fas fa-moon dark:hidden"></i>
-                    <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
-                </button>
+            <div class="flex items-center gap-3">
+                <i class="fas fa-layer-group text-tech-accent text-2xl"></i>
+                <span class="font-bold tracking-tight text-xl">Eng<span class="text-tech-accent">Vault</span></span>
             </div>
+            <a href="#about" class="text-sm font-medium text-zinc-400 hover:text-white transition">About Setup</a>
         </div>
     </nav>
 
-    <section class="relative pt-48 pb-32 px-6 overflow-hidden">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-brand/20 blur-[120px] rounded-full -z-10"></div>
+    <main class="max-w-7xl mx-auto px-6 pt-32 pb-24">
         
-        <div class="max-w-5xl mx-auto text-center reveal">
-            <span class="px-4 py-1.5 rounded-full bg-brand/10 text-brand text-sm font-bold mb-6 inline-block border border-brand/20">Version 1.0 is Live</span>
-            <h1 class="text-6xl md:text-8xl font-black mb-6 tracking-tight leading-none">
-    Padhna <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-400">Padega?!</span> 
+        <header class="mb-20 text-center reveal">
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-zinc-500">
+                Academic Hub
             </h1>
-            <p class="text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto mb-12">
-                Don't be me gng 😔🙏 
+            <p class="text-zinc-400 text-lg md:text-xl max-w-2xl mx-auto font-light">
+                Curated lecture notes, lab records, and official PYQs. Streamlined for R25.
             </p>
-            
-            <div class="max-w-xl mx-auto relative group reveal">
-                <input type="text" placeholder="Search for 'Maths PYQ' or 'Physics Notes'..." 
-                    class="w-full pl-14 pr-6 py-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xl focus:ring-2 ring-brand outline-none transition-all group-hover:border-brand/50">
-                <i class="fas fa-search absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-brand transition-colors"></i>
+        </header>
+
+        <section class="mb-16">
+            <div class="flex items-center gap-4 mb-8 reveal">
+                <div class="h-[1px] flex-grow bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+                <h2 class="text-2xl font-bold tracking-tight">Semester <span class="text-tech-accent">1</span></h2>
+                <div class="h-[1px] flex-grow bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
             </div>
-        </div>
-    </section>
 
-    <main id="vault" class="max-w-7xl mx-auto px-6 py-24 border-t border-slate-200 dark:border-slate-800">
-        
-        <div class="text-center mb-16 reveal">
-            <h2 class="text-3xl font-bold">Lecture Notes</h2>
-        </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <a href="https://drive.google.com/drive/folders/1gU9GOdfYckfnjVCTUc8zyqJC077_K5Gu?usp=drive_link" target="_blank" class="glass-card rounded-2xl p-6 group reveal">
+                    <div class="flex justify-between items-center mb-4 text-tech-accent">
+                        <i class="fas fa-superscript text-2xl"></i>
+                        <i class="fab fa-google-drive opacity-50 group-hover:opacity-100 transition"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1 group-hover:text-tech-accent transition">Mathematics (M1)</h3>
+                    <p class="text-sm text-zinc-500">Matrices & Calculus</p>
+                </a>
 
-        <h3 class="text-xl font-bold mb-6 text-brand reveal">Semester 1</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
-            
-            <div class="card-reveal bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl hover:border-emerald-500 transition shadow-sm hover:shadow-md">
-                <div class="flex justify-between items-start mb-4">
-                    <h4 class="font-bold text-lg">Mathematics (M1)</h4>
-                    <i class="fab fa-google-drive text-emerald-500 text-xl"></i>
+                <a href="https://drive.google.com/drive/folders/1u6Z9AzG9wF1KJOr6ywKXWGHic9PWgh-5?usp=drive_link" target="_blank" class="glass-card rounded-2xl p-6 group reveal">
+                    <div class="flex justify-between items-center mb-4 text-tech-accent">
+                        <i class="fas fa-atom text-2xl"></i>
+                        <i class="fab fa-google-drive opacity-50 group-hover:opacity-100 transition"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1 group-hover:text-tech-accent transition">Eng Physics</h3>
+                    <p class="text-sm text-zinc-500">Materials & Mechanics</p>
+                </a>
+
+                <a href="https://drive.google.com/drive/folders/1nyW95NqvAsuvba3Be9YeJ9mAlt0hnAUJ?usp=sharing" target="_blank" class="glass-card rounded-2xl p-6 group reveal">
+                    <div class="flex justify-between items-center mb-4 text-tech-accent">
+                        <i class="fas fa-flask text-2xl"></i>
+                        <i class="fab fa-google-drive opacity-50 group-hover:opacity-100 transition"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1 group-hover:text-tech-accent transition">Applied Chem</h3>
+                    <p class="text-sm text-zinc-500">Engineering Chemistry</p>
+                </a>
+
+                <a href="https://drive.google.com/drive/folders/1BGORyS4FZ1ZxUlEOwkhI0PtaK77ZTmFP?usp=drive_link" target="_blank" class="glass-card rounded-2xl p-6 group reveal">
+                    <div class="flex justify-between items-center mb-4 text-tech-accent">
+                        <i class="fas fa-microchip text-2xl"></i>
+                        <i class="fab fa-google-drive opacity-50 group-hover:opacity-100 transition"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1 group-hover:text-tech-accent transition">EDC</h3>
+                    <p class="text-sm text-zinc-500">Electronic Devices</p>
+                </a>
+
+                <a href="https://drive.google.com/drive/folders/1XHPv33MUlCrCHVPWwBP13Md-1MihH6-i?usp=drive_link" target="_blank" class="glass-card rounded-2xl p-6 group reveal">
+                    <div class="flex justify-between items-center mb-4 text-tech-accent">
+                        <i class="fas fa-cogs text-2xl"></i>
+                        <i class="fab fa-google-drive opacity-50 group-hover:opacity-100 transition"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1 group-hover:text-tech-accent transition">Classical Mech</h3>
+                    <p class="text-sm text-zinc-500">Statics & Dynamics</p>
+                </a>
+
+                <div class="rounded-2xl p-6 border border-white/5 bg-tech-800/30 opacity-60 reveal">
+                    <div class="flex justify-between items-center mb-4 text-zinc-600">
+                        <i class="fas fa-bolt text-2xl"></i>
+                        <i class="fas fa-lock text-sm"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1 text-zinc-400">Basic EEE</h3>
+                    <p class="text-sm text-zinc-600">Coming Soon</p>
                 </div>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Complete unit notes & materials</p>
-                <a href="https://drive.google.com/drive/folders/1gU9GOdfYckfnjVCTUc8zyqJC077_K5Gu?usp=drive_link" target="_blank" class="flex items-center justify-center gap-2 w-full py-2 bg-slate-100 dark:bg-slate-800 rounded-xl hover:bg-emerald-500 hover:text-white transition text-sm font-bold">
-                    <span>Open Drive Folder</span>
-                    <i class="fas fa-external-link-alt text-xs"></i>
+
+                <div class="rounded-2xl p-6 border border-white/5 bg-tech-800/30 opacity-60 reveal">
+                    <div class="flex justify-between items-center mb-4 text-zinc-600">
+                        <i class="fas fa-code text-2xl"></i>
+                        <i class="fas fa-lock text-sm"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1 text-zinc-400">C Programming</h3>
+                    <p class="text-sm text-zinc-600">Coming Soon</p>
+                </div>
+
+                <div class="rounded-2xl p-6 border border-white/5 bg-tech-800/30 opacity-60 reveal">
+                    <div class="flex justify-between items-center mb-4 text-zinc-600">
+                        <i class="fas fa-language text-2xl"></i>
+                        <i class="fas fa-lock text-sm"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1 text-zinc-400">English</h3>
+                    <p class="text-sm text-zinc-600">Coming Soon</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <div class="flex items-center gap-4 mb-8 reveal">
+                <div class="h-[1px] flex-grow bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+                <h2 class="text-2xl font-bold tracking-tight">Semester <span class="text-tech-accent">2</span></h2>
+                <div class="h-[1px] flex-grow bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <a href="https://drive.google.com/drive/folders/11eQhVodrv6Gkz8bpFgyyYLDKZk8rOiIr?usp=drive_link" target="_blank" class="glass-card rounded-2xl p-6 group reveal">
+                    <div class="flex justify-between items-center mb-4 text-purple-400">
+                        <i class="fas fa-wave-square text-2xl"></i>
+                        <i class="fab fa-google-drive opacity-50 group-hover:opacity-100 transition"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1 group-hover:text-purple-400 transition">Mathematics (ODVEC)</h3>
+                    <p class="text-sm text-zinc-500">ODEs & Vector Calc</p>
+                </a>
+
+                <a href="https://drive.google.com/drive/folders/1u6Z9AzG9wF1KJOr6ywKXWGHic9PWgh-5?usp=drive_link" target="_blank" class="glass-card rounded-2xl p-6 group reveal">
+                    <div class="flex justify-between items-center mb-4 text-purple-400">
+                        <i class="fas fa-atom text-2xl"></i>
+                        <i class="fab fa-google-drive opacity-50 group-hover:opacity-100 transition"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1 group-hover:text-purple-400 transition">Eng Physics</h3>
+                    <p class="text-sm text-zinc-500">Materials & Mechanics</p>
+                </a>
+
+                <a href="https://drive.google.com/drive/folders/1nyW95NqvAsuvba3Be9YeJ9mAlt0hnAUJ?usp=sharing" target="_blank" class="glass-card rounded-2xl p-6 group reveal">
+                    <div class="flex justify-between items-center mb-4 text-purple-400">
+                        <i class="fas fa-flask text-2xl"></i>
+                        <i class="fab fa-google-drive opacity-50 group-hover:opacity-100 transition"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1 group-hover:text-purple-400 transition">Applied Chem</h3>
+                    <p class="text-sm text-zinc-500">Engineering Chemistry</p>
+                </a>
+
+                <a href="https://drive.google.com/drive/folders/1BGORyS4FZ1ZxUlEOwkhI0PtaK77ZTmFP?usp=drive_link" target="_blank" class="glass-card rounded-2xl p-6 group reveal">
+                    <div class="flex justify-between items-center mb-4 text-purple-400">
+                        <i class="fas fa-microchip text-2xl"></i>
+                        <i class="fab fa-google-drive opacity-50 group-hover:opacity-100 transition"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1 group-hover:text-purple-400 transition">EDC</h3>
+                    <p class="text-sm text-zinc-500">Electronic Devices</p>
+                </a>
+
+                <a href="https://drive.google.com/drive/folders/1XHPv33MUlCrCHVPWwBP13Md-1MihH6-i?usp=drive_link" target="_blank" class="glass-card rounded-2xl p-6 group reveal">
+                    <div class="flex justify-between items-center mb-4 text-purple-400">
+                        <i class="fas fa-cogs text-2xl"></i>
+                        <i class="fab fa-google-drive opacity-50 group-hover:opacity-100 transition"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1 group-hover:text-purple-400 transition">Classical Mech</h3>
+                    <p class="text-sm text-zinc-500">Statics & Dynamics</p>
+                </a>
+
+                <div class="rounded-2xl p-6 border border-white/5 bg-tech-800/30 opacity-60 reveal">
+                    <div class="flex justify-between items-center mb-4 text-zinc-600">
+                        <i class="fab fa-python text-2xl"></i>
+                        <i class="fas fa-lock text-sm"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1 text-zinc-400">Python Prog</h3>
+                    <p class="text-sm text-zinc-600">Coming Soon</p>
+                </div>
+
+                <div class="rounded-2xl p-6 border border-white/5 bg-tech-800/30 opacity-60 reveal">
+                    <div class="flex justify-between items-center mb-4 text-zinc-600">
+                        <i class="fas fa-drafting-compass text-2xl"></i>
+                        <i class="fas fa-lock text-sm"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1 text-zinc-400">Eng Drawing</h3>
+                    <p class="text-sm text-zinc-600">Coming Soon</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <div class="flex items-center gap-4 mb-8 reveal">
+                <div class="h-[1px] flex-grow bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+                <h2 class="text-2xl font-bold tracking-tight">Records & Tests <span class="text-zinc-500 text-lg ml-2">R25</span></h2>
+                <div class="h-[1px] flex-grow bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <a href="https://drive.google.com/drive/folders/1jsDmR6SiLeW5jy8nzFYK3aAtQLWKFx2n?usp=drive_link" target="_blank" class="glass-card rounded-2xl p-8 group flex items-start gap-6 reveal hover:border-emerald-500/30">
+                    <div class="w-14 h-14 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0">
+                        <i class="fas fa-book-open text-emerald-400 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-emerald-400 transition">Lab Records</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed mb-4">Official laboratory records, manuals, and practical observation materials organized by subject.</p>
+                        <span class="text-xs font-bold text-emerald-500 uppercase tracking-wider flex items-center gap-2">
+                            Access Drive <i class="fas fa-arrow-right group-hover:translate-x-1 transition"></i>
+                        </span>
+                    </div>
+                </a>
+
+                <a href="https://drive.google.com/drive/folders/1OaWUQAVcNnTc6GgYnC6DJmq7-HYMEeuo?usp=drive_link" target="_blank" class="glass-card rounded-2xl p-8 group flex items-start gap-6 reveal hover:border-emerald-500/30">
+                    <div class="w-14 h-14 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0">
+                        <i class="fas fa-file-signature text-emerald-400 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-emerald-400 transition">Internal Test Files</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed mb-4">R25 midterms, internal examination question papers, quizzes, and assignment questions.</p>
+                        <span class="text-xs font-bold text-emerald-500 uppercase tracking-wider flex items-center gap-2">
+                            Access Drive <i class="fas fa-arrow-right group-hover:translate-x-1 transition"></i>
+                        </span>
+                    </div>
                 </a>
             </div>
+        </section>
 
-            <div class="card-reveal bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl hover:border-emerald-500 transition shadow-sm hover:shadow-md">
-                <div class="flex justify-between items-start mb-4">
-                    <h4 class="font-bold text-lg">Engineering Physics</h4>
-                    <i class="fab fa-google-drive text-emerald-500 text-xl"></i>
+        <section>
+            <div class="flex items-center gap-4 mb-8 reveal">
+                <div class="h-[1px] flex-grow bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+                <h2 class="text-2xl font-bold tracking-tight text-white">Question Papers <span class="text-zinc-500 text-lg ml-2">PYQs</span></h2>
+                <div class="h-[1px] flex-grow bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+            </div>
+
+            <div class="grid grid-cols-1 gap-6 mb-6">
+                <div class="glass-card rounded-2xl p-8 reveal border-rose-500/20">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                        <div class="flex-grow">
+                            <div class="flex items-center gap-3 mb-2">
+                                <i class="fas fa-university text-rose-500 text-xl"></i>
+                                <h3 class="text-xl font-bold text-white">Official JNTUH Test Series</h3>
+                            </div>
+                            <p class="text-zinc-400 text-sm mb-4">
+                                Redirects to the official JNTUH OSS portal. Contains complete subject-wise and semester-wise previous question papers for <strong class="text-white">R07 through R18</strong> regulations.
+                            </p>
+                        </div>
+                        <a href="https://studentservices.jntuh.ac.in/oss/syllabus_action.html?type=previousQPapers&level=1.I-I&l123=2" target="_blank" class="shrink-0 bg-white text-black px-6 py-3 rounded-xl font-bold hover:bg-rose-500 hover:text-white transition-all duration-300 flex items-center justify-center gap-2">
+                            Open Portal <i class="fas fa-external-link-alt text-sm"></i>
+                        </a>
+                    </div>
                 </div>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Complete unit notes & materials</p>
-                <a href="https://drive.google.com/drive/folders/1u6Z9AzG9wF1KJOr6ywKXWGHic9PWgh-5?usp=drive_link" target="_blank" class="flex items-center justify-center gap-2 w-full py-2 bg-slate-100 dark:bg-slate-800 rounded-xl hover:bg-emerald-500 hover:text-white transition text-sm font-bold">
-                    <span>Open Drive Folder</span>
-                    <i class="fas fa-external-link-alt text-xs"></i>
-                </a>
             </div>
 
-            <div class="card-reveal bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl hover:border-emerald-500 transition shadow-sm hover:shadow-md">
-                <div class="flex justify-between items-start mb-4">
-                    <h4 class="font-bold text-lg">Engineering Chemistry</h4>
-                    <i class="fab fa-google-drive text-emerald-500 text-xl"></i>
-                </div>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Complete unit notes & materials</p>
-                <a href="https://drive.google.com/drive/folders/1nyW95NqvAsuvba3Be9YeJ9mAlt0hnAUJ?usp=sharing" target="_blank" class="flex items-center justify-center gap-2 w-full py-2 bg-slate-100 dark:bg-slate-800 rounded-xl hover:bg-emerald-500 hover:text-white transition text-sm font-bold">
-                    <span>Open Drive Folder</span>
-                    <i class="fas fa-external-link-alt text-xs"></i>
-                </a>
-            </div>
-
-            <div class="card-reveal bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl hover:border-emerald-500 transition shadow-sm hover:shadow-md">
-                <div class="flex justify-between items-start mb-4">
-                    <h4 class="font-bold text-lg">Electronic Devices (EDC)</h4>
-                    <i class="fab fa-google-drive text-emerald-500 text-xl"></i>
-                </div>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Complete unit notes & materials</p>
-                <a href="https://drive.google.com/drive/folders/1BGORyS4FZ1ZxUlEOwkhI0PtaK77ZTmFP?usp=drive_link" target="_blank" class="flex items-center justify-center gap-2 w-full py-2 bg-slate-100 dark:bg-slate-800 rounded-xl hover:bg-emerald-500 hover:text-white transition text-sm font-bold">
-                    <span>Open Drive Folder</span>
-                    <i class="fas fa-external-link-alt text-xs"></i>
-                </a>
-            </div>
-
-            <div class="card-reveal bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl hover:border-emerald-500 transition shadow-sm hover:shadow-md">
-                <div class="flex justify-between items-start mb-4">
-                    <h4 class="font-bold text-lg">Classical Mechanics</h4>
-                    <i class="fab fa-google-drive text-emerald-500 text-xl"></i>
-                </div>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Complete unit notes & materials</p>
-                <a href="https://drive.google.com/drive/folders/1XHPv33MUlCrCHVPWwBP13Md-1MihH6-i?usp=drive_link" target="_blank" class="flex items-center justify-center gap-2 w-full py-2 bg-slate-100 dark:bg-slate-800 rounded-xl hover:bg-emerald-500 hover:text-white transition text-sm font-bold">
-                    <span>Open Drive Folder</span>
-                    <i class="fas fa-external-link-alt text-xs"></i>
-                </a>
-            </div>
-
-            <div class="card-reveal bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl hover:border-emerald-500 transition shadow-sm hover:shadow-md">
-                <div class="flex justify-between items-start mb-4">
-                    <h4 class="font-bold text-lg">Record Work</h4>
-                    <i class="fab fa-google-drive text-emerald-500 text-xl"></i>
-                </div>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Lab records and manuals</p>
-                <a href="https://drive.google.com/drive/folders/1jsDmR6SiLeW5jy8nzFYK3aAtQLWKFx2n?usp=drive_link" target="_blank" class="flex items-center justify-center gap-2 w-full py-2 bg-slate-100 dark:bg-slate-800 rounded-xl hover:bg-emerald-500 hover:text-white transition text-sm font-bold">
-                    <span>Open Drive Folder</span>
-                    <i class="fas fa-external-link-alt text-xs"></i>
-                </a>
-            </div>
-
-            <div class="card-reveal bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl hover:border-emerald-500 transition shadow-sm hover:shadow-md">
-                <div class="flex justify-between items-start mb-4">
-                    <h4 class="font-bold text-lg">Test Files</h4>
-                    <i class="fab fa-google-drive text-emerald-500 text-xl"></i>
-                </div>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Midterms, quizzes, and tests</p>
-                <a href="https://drive.google.com/drive/folders/1OaWUQAVcNnTc6GgYnC6DJmq7-HYMEeuo?usp=drive_link" target="_blank" class="flex items-center justify-center gap-2 w-full py-2 bg-slate-100 dark:bg-slate-800 rounded-xl hover:bg-emerald-500 hover:text-white transition text-sm font-bold">
-                    <span>Open Drive Folder</span>
-                    <i class="fas fa-external-link-alt text-xs"></i>
-                </a>
-            </div>
-
-            <div class="card-reveal bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl hover:border-brand transition shadow-sm hover:shadow-md opacity-75">
-                <h4 class="font-bold text-lg mb-4">Basic EEE</h4>
-                <a href="#" class="block w-full text-center py-2 bg-slate-100 dark:bg-slate-800 rounded-xl text-slate-500 transition text-sm font-bold cursor-not-allowed">Coming Soon</a>
-            </div>
-
-            <div class="card-reveal bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl hover:border-brand transition shadow-sm hover:shadow-md opacity-75">
-                <h4 class="font-bold text-lg mb-4">C Programming</h4>
-                <a href="#" class="block w-full text-center py-2 bg-slate-100 dark:bg-slate-800 rounded-xl text-slate-500 transition text-sm font-bold cursor-not-allowed">Coming Soon</a>
-            </div>
-
-            <div class="card-reveal bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl hover:border-brand transition shadow-sm hover:shadow-md opacity-75">
-                <h4 class="font-bold text-lg mb-4">English</h4>
-                <a href="#" class="block w-full text-center py-2 bg-slate-100 dark:bg-slate-800 rounded-xl text-slate-500 transition text-sm font-bold cursor-not-allowed">Coming Soon</a>
-            </div>
-
-            <div class="card-reveal bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl hover:border-brand transition shadow-sm hover:shadow-md opacity-75">
-                <h4 class="font-bold text-lg mb-4">Python</h4>
-                <a href="#" class="block w-full text-center py-2 bg-slate-100 dark:bg-slate-800 rounded-xl text-slate-500 transition text-sm font-bold cursor-not-allowed">Coming Soon</a>
-            </div>
-        </div>
-
-        <h3 class="text-xl font-bold mb-6 text-brand reveal">Semester 2</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
-            
-            <div class="card-reveal bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl hover:border-emerald-500 transition shadow-sm hover:shadow-md">
-                <div class="flex justify-between items-start mb-4">
-                    <h4 class="font-bold text-lg">Mathematics (ODVEC)</h4>
-                    <i class="fab fa-google-drive text-emerald-500 text-xl"></i>
-                </div>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Complete unit notes & materials</p>
-                <a href="https://drive.google.com/drive/folders/11eQhVodrv6Gkz8bpFgyyYLDKZk8rOiIr?usp=drive_link" target="_blank" class="flex items-center justify-center gap-2 w-full py-2 bg-slate-100 dark:bg-slate-800 rounded-xl hover:bg-emerald-500 hover:text-white transition text-sm font-bold">
-                    <span>Open Drive Folder</span>
-                    <i class="fas fa-external-link-alt text-xs"></i>
-                </a>
-            </div>
-
-            <div class="card-reveal bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl hover:border-emerald-500 transition shadow-sm hover:shadow-md">
-                <div class="flex justify-between items-start mb-4">
-                    <h4 class="font-bold text-lg">Engineering Physics</h4>
-                    <i class="fab fa-google-drive text-emerald-500 text-xl"></i>
-                </div>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Complete unit notes & materials</p>
-                <a href="https://drive.google.com/drive/folders/1u6Z9AzG9wF1KJOr6ywKXWGHic9PWgh-5?usp=drive_link" target="_blank" class="flex items-center justify-center gap-2 w-full py-2 bg-slate-100 dark:bg-slate-800 rounded-xl hover:bg-emerald-500 hover:text-white transition text-sm font-bold">
-                    <span>Open Drive Folder</span>
-                    <i class="fas fa-external-link-alt text-xs"></i>
-                </a>
-            </div>
-
-            <div class="card-reveal bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl hover:border-emerald-500 transition shadow-sm hover:shadow-md">
-                <div class="flex justify-between items-start mb-4">
-                    <h4 class="font-bold text-lg">Engineering Chemistry</h4>
-                    <i class="fab fa-google-drive text-emerald-500 text-xl"></i>
-                </div>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Complete unit notes & materials</p>
-                <a href="https://drive.google.com/drive/folders/1nyW95NqvAsuvba3Be9YeJ9mAlt0hnAUJ?usp=sharing" target="_blank" class="flex items-center justify-center gap-2 w-full py-2 bg-slate-100 dark:bg-slate-800 rounded-xl hover:bg-emerald-500 hover:text-white transition text-sm font-bold">
-                    <span>Open Drive Folder</span>
-                    <i class="fas fa-external-link-alt text-xs"></i>
-                </a>
-            </div>
-
-            <div class="card-reveal bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl hover:border-emerald-500 transition shadow-sm hover:shadow-md">
-                <div class="flex justify-between items-start mb-4">
-                    <h4 class="font-bold text-lg">Electronic Devices (EDC)</h4>
-                    <i class="fab fa-google-drive text-emerald-500 text-xl"></i>
-                </div>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Complete unit notes & materials</p>
-                <a href="https://drive.google.com/drive/folders/1BGORyS4FZ1ZxUlEOwkhI0PtaK77ZTmFP?usp=drive_link" target="_blank" class="flex items-center justify-center gap-2 w-full py-2 bg-slate-100 dark:bg-slate-800 rounded-xl hover:bg-emerald-500 hover:text-white transition text-sm font-bold">
-                    <span>Open Drive Folder</span>
-                    <i class="fas fa-external-link-alt text-xs"></i>
-                </a>
-            </div>
-
-            <div class="card-reveal bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl hover:border-emerald-500 transition shadow-sm hover:shadow-md">
-                <div class="flex justify-between items-start mb-4">
-                    <h4 class="font-bold text-lg">Classical Mechanics</h4>
-                    <i class="fab fa-google-drive text-emerald-500 text-xl"></i>
-                </div>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Complete unit notes & materials</p>
-                <a href="https://drive.google.com/drive/folders/1XHPv33MUlCrCHVPWwBP13Md-1MihH6-i?usp=drive_link" target="_blank" class="flex items-center justify-center gap-2 w-full py-2 bg-slate-100 dark:bg-slate-800 rounded-xl hover:bg-emerald-500 hover:text-white transition text-sm font-bold">
-                    <span>Open Drive Folder</span>
-                    <i class="fas fa-external-link-alt text-xs"></i>
-                </a>
-            </div>
-
-            <div class="card-reveal bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl hover:border-brand transition shadow-sm hover:shadow-md opacity-75">
-                <h4 class="font-bold text-lg mb-4">Basic EEE</h4>
-                <a href="#" class="block w-full text-center py-2 bg-slate-100 dark:bg-slate-800 rounded-xl text-slate-500 transition text-sm font-bold cursor-not-allowed">Coming Soon</a>
-            </div>
-
-            <div class="card-reveal bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl hover:border-brand transition shadow-sm hover:shadow-md opacity-75">
-                <h4 class="font-bold text-lg mb-4">C Programming</h4>
-                <a href="#" class="block w-full text-center py-2 bg-slate-100 dark:bg-slate-800 rounded-xl text-slate-500 transition text-sm font-bold cursor-not-allowed">Coming Soon</a>
-            </div>
-
-            <div class="card-reveal bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl hover:border-brand transition shadow-sm hover:shadow-md opacity-75">
-                <h4 class="font-bold text-lg mb-4">English</h4>
-                <a href="#" class="block w-full text-center py-2 bg-slate-100 dark:bg-slate-800 rounded-xl text-slate-500 transition text-sm font-bold cursor-not-allowed">Coming Soon</a>
-            </div>
-
-            <div class="card-reveal bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl hover:border-brand transition shadow-sm hover:shadow-md opacity-75">
-                <h4 class="font-bold text-lg mb-4">Python Programming</h4>
-                <a href="#" class="block w-full text-center py-2 bg-slate-100 dark:bg-slate-800 rounded-xl text-slate-500 transition text-sm font-bold cursor-not-allowed">Coming Soon</a>
-            </div>
-
-            <div class="card-reveal bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl hover:border-brand transition shadow-sm hover:shadow-md opacity-75">
-                <h4 class="font-bold text-lg mb-4">Engineering Drawing</h4>
-                <a href="#" class="block w-full text-center py-2 bg-slate-100 dark:bg-slate-800 rounded-xl text-slate-500 transition text-sm font-bold cursor-not-allowed">Coming Soon</a>
-            </div>
-        </div>
-
-        <h3 class="text-xl font-bold mb-6 text-slate-500 reveal">Semesters 3 to 8</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="card-reveal flex items-center justify-between p-6 bg-slate-100 dark:bg-slate-800/50 rounded-2xl border border-dashed border-slate-300 dark:border-slate-700">
+            <div class="rounded-2xl p-6 border border-dashed border-white/10 bg-transparent flex items-center justify-between reveal">
                 <div>
-                    <h4 class="font-bold text-lg text-slate-600 dark:text-slate-400">Senior Semesters (3-8)</h4>
-                    <p class="text-sm text-slate-500">Materials are currently being compiled.</p>
+                    <h4 class="font-bold text-zinc-400">Senior Semesters (3-8)</h4>
+                    <p class="text-sm text-zinc-600">Locked for current academic year</p>
                 </div>
-                <i class="fas fa-lock text-2xl text-slate-400"></i>
+                <i class="fas fa-lock text-zinc-600 text-xl"></i>
             </div>
-        </div>
-    </div>
-
-    <div>
-        <div class="flex items-center gap-4 mb-8 border-b border-slate-200 dark:border-slate-800 pb-4 reveal">
-            <div class="w-12 h-12 bg-red-500/10 text-red-500 rounded-xl flex items-center justify-center text-2xl"><i class="fas fa-file-pdf"></i></div>
-            <h2 class="text-3xl font-bold">PYQs (Question Papers)</h2>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div class="card-reveal bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 rounded-3xl hover:border-red-500/50 transition">
-                <h3 class="text-2xl font-bold mb-2">Semester 1 - All Subjects</h3>
-                <p class="text-slate-500 dark:text-slate-400 mb-6">M1, Eng Physics, Eng Chem, EEE, ECE, Classical Mechanics, C Prog, English, Python.</p>
-                <a href="#" class="flex items-center justify-center gap-2 w-full py-3 bg-slate-100 dark:bg-slate-800 rounded-xl hover:bg-red-500 hover:text-white transition font-bold">
-                    Browse Sem 1 PYQs <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-            
-            <div class="card-reveal bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 rounded-3xl hover:border-red-500/50 transition">
-                <h3 class="text-2xl font-bold mb-2">Semester 2 - All Subjects</h3>
-                <p class="text-slate-500 dark:text-slate-400 mb-6">ODVEC, Eng Physics, Eng Chem, EEE, ECE, Classical Mechanics, Eng Drawing, Python Prog.</p>
-                <a href="#" class="flex items-center justify-center gap-2 w-full py-3 bg-slate-100 dark:bg-slate-800 rounded-xl hover:bg-red-500 hover:text-white transition font-bold">
-                    Browse Sem 2 PYQs <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </div>
-
-        <h3 class="text-xl font-bold mb-6 text-slate-500 reveal">Semesters 3 to 8</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="card-reveal flex items-center justify-between p-6 bg-slate-100 dark:bg-slate-800/50 rounded-2xl border border-dashed border-slate-300 dark:border-slate-700">
-                <div>
-                    <h4 class="font-bold text-lg text-slate-600 dark:text-slate-400">Senior Semesters (3-8) PYQs</h4>
-                    <p class="text-sm text-slate-500">Exam papers are currently being verified.</p>
-                </div>
-                <i class="fas fa-lock text-2xl text-slate-400"></i>
-            </div>
-        </div>
-    </div>
+        </section>
 
     </main>
 
-    <footer class="py-12 border-t border-slate-200 dark:border-slate-800 text-center">
-        <p class="text-slate-500 font-medium">© 2026 Padh.ai | Created by <span class="text-brand">Armaan Singh</span></p>
+    <footer class="border-t border-white/5 py-8 text-center mt-12 bg-tech-900/50 backdrop-blur-md">
+        <p class="text-zinc-600 text-sm font-medium">Curated for excellence. Built for efficiency.</p>
     </footer>
 
     <script>
-        // SMART SEARCH LOGIC
-        const searchBox = document.querySelector('input[type="text"]');
-        const cards = document.querySelectorAll('.card-reveal');
-
-        searchBox.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
             
-            cards.forEach(card => {
-                const cardText = card.innerText.toLowerCase();
-                if (cardText.includes(searchTerm)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
+            const revealOnScroll = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
             });
-        });
 
-        // DARK MODE TOGGLE
-        const toggle = document.getElementById('theme-toggle');
-        toggle.addEventListener('click', () => {
-            document.documentElement.classList.toggle('dark');
-        });
-
-        // SCROLL REVEAL ANIMATIONS
-        ScrollReveal().reveal('.reveal', { 
-            distance: '50px', 
-            duration: 1000, 
-            easing: 'cubic-bezier(0.5, 0, 0, 1)', 
-            interval: 200 
-        });
-        ScrollReveal().reveal('.card-reveal', { 
-            distance: '80px', 
-            duration: 1200, 
-            origin: 'bottom',
-            interval: 150 
+            reveals.forEach((element, index) => {
+                // Staggered delay for grid items
+                element.style.transitionDelay = `${(index % 4) * 0.1}s`;
+                revealOnScroll.observe(element);
+            });
         });
     </script>
 </body>
