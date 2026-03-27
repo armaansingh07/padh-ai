@@ -1,45 +1,162 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | Padh.ai</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script>tailwind.config = { darkMode: 'class' }</script>
-</head>
-<body class="bg-slate-50 dark:bg-[#0f172a] text-slate-900 dark:text-slate-100 transition-colors duration-500">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <nav class="fixed w-full z-50 backdrop-blur-lg border-b border-slate-200 dark:border-slate-800">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        tech: { 900: '#000000', 800: '#0a0a0c', 700: '#141417', accent: '#ffffff' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { 
+            background-color: #000000; 
+            color: #f4f4f5; 
+            overflow-x: hidden; 
+        }
+        
+        /* Vibrant Background Glow Orbs */
+        .glow-orb { 
+            position: absolute; 
+            border-radius: 50%; 
+            filter: blur(140px); 
+            z-index: -1; 
+            opacity: 0.4; 
+            animation: pulse-slow 8s infinite alternate;
+        }
+        .orb-1 { top: -5%; left: -10%; width: 50vw; height: 50vw; background: rgba(0, 195, 255, 0.2); }
+        .orb-2 { top: 40%; right: -10%; width: 45vw; height: 45vw; background: rgba(59, 130, 246, 0.15); }
+
+        @keyframes pulse-slow {
+            0% { transform: scale(1); opacity: 0.3; }
+            100% { transform: scale(1.1); opacity: 0.5; }
+        }
+
+        /* Scrollytelling Animation */
+        .reveal { 
+            opacity: 0; 
+            filter: blur(10px);
+            transform: translateY(40px) scale(0.98); 
+            transition: all 1s cubic-bezier(0.22, 1, 0.36, 1); 
+        }
+        .reveal.active { 
+            opacity: 1; 
+            filter: blur(0px);
+            transform: translateY(0) scale(1); 
+        }
+
+        /* Frosted Glass */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+    </style>
+</head>
+<body class="relative min-h-screen antialiased selection:bg-blue-500 selection:text-white">
+
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+
+    <nav class="fixed w-full z-50 top-0 border-b border-white/[0.05] bg-black/50 backdrop-blur-xl supports-[backdrop-filter]:bg-black/30">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-black tracking-tighter">padh<span class="text-blue-500">.ai</span></a>
-            <div class="flex items-center space-x-8 font-medium">
-                <a href="index.html" class="hover:text-blue-500 transition">Home</a>
-                <a href="about.html" class="text-blue-500">About</a>
-                <a href="contact.html" class="hover:text-blue-500 transition">Contact</a>
+            <a href="index.html" class="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity">
+                <i class="fas fa-layer-group text-blue-500 text-2xl drop-shadow-[0_0_10px_rgba(59,130,246,0.5)]"></i>
+                <span class="font-bold tracking-tight text-xl text-white">Padh<span class="text-blue-500">.ai</span></span>
+            </a>
+            
+            <div class="flex gap-2 sm:gap-4 items-center">
+                <a href="index.html" class="text-sm font-semibold text-zinc-400 hover:text-white px-3 py-2 rounded-full transition-all duration-300 hover:bg-white/10 hidden sm:block">
+                    Home
+                </a>
+                <a href="about.html" class="text-sm font-semibold text-white bg-white/10 px-4 py-2 rounded-full transition-all duration-300 flex items-center gap-2 border border-white/10">
+                    <i class="fas fa-rocket text-xs opacity-70"></i> About
+                </a>
+                <a href="contact.html" class="text-sm font-semibold text-zinc-400 hover:text-white px-3 py-2 rounded-full transition-all duration-300 hover:bg-white/10">
+                    Contact
+                </a>
             </div>
         </div>
     </nav>
 
-    <section class="pt-48 pb-20 px-6 max-w-4xl mx-auto">
-        <div class="reveal">
-            <h1 class="text-5xl font-black mb-8">The Mission</h1>
-            <p class="text-xl text-slate-500 dark:text-slate-400 leading-relaxed mb-6">
-                Padh.ai spawnned off like sum simple necessity, hopefully you enjoy it. if not kys: <span class="text-slate-900 dark:text-white font-bold"> lots of love!:D</span> 
+    <main class="pt-48 pb-20 px-6 max-w-3xl mx-auto">
+        
+        <header class="mb-16 reveal">
+            <h1 class="text-5xl md:text-7xl font-black mb-8 tracking-tighter bg-clip-text text-transparent bg-gradient-to-br from-white via-zinc-200 to-zinc-600">
+                The Mission.
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-zinc-400 font-light leading-relaxed mb-6">
+                Padh.ai spawned off like sum simple necessity, hopefully you enjoy it. If not, cry about it: <span class="text-white font-semibold">lots of love!:D</span> 
             </p>
-            <p class="text-lg text-slate-500 dark:text-slate-400 leading-relaxed mb-12">
-                As a student at JNTUH, I realized that study materials and previous year questions were scattered, hidden behind ads, or locked in slow-loading portals. This site is a clean, advanced, and free alternative designed to help every student excel (TBH thick portfolio banana tha gng).
+            
+            <p class="text-lg text-zinc-500 leading-relaxed mb-12">
+                As a student at JNTUH, I realized that study materials and previous year questions were scattered, hidden behind ads, or locked in slow-loading portals. This site is a clean, advanced, and free alternative designed to help every student excel <br><br>
+                <span class="italic text-zinc-600">(TBH thick portfolio banana tha gng).</span>
             </p>
-            <div class="p-8 rounded-[32px] bg-blue-500 text-white shadow-2xl shadow-blue-500/20">
-                <h2 class="text-2xl font-bold mb-2">Armaan Singh</h2>
-                <p class="opacity-80 uppercase tracking-widest text-sm font-bold">Founder & Lead Developer</p>
+        </header>
+
+        <div class="reveal glass-card rounded-[32px] p-8 md:p-10 border border-blue-500/20 relative overflow-hidden group hover:border-blue-500/50">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl -mr-20 -mt-20 group-hover:bg-blue-500/20 transition-colors duration-700"></div>
+            
+            <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center gap-6">
+                <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-[0_0_30px_rgba(59,130,246,0.3)] shrink-0 group-hover:scale-105 transition-transform duration-500">
+                    <i class="fas fa-user-astronaut text-3xl text-white"></i>
+                </div>
+                
+                <div>
+                    <h2 class="text-3xl font-bold mb-1 text-white tracking-tight">Armaan Singh</h2>
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></div>
+                        <p class="text-blue-400 uppercase tracking-widest text-sm font-bold">Founder & Lead Developer</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+
+    </main>
 
     <script>
-        ScrollReveal().reveal('.reveal', { distance: '50px', duration: 1000, easing: 'ease-out' });
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            const revealOnScroll = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            reveals.forEach((element, index) => {
+                element.style.transitionDelay = `${index * 0.15}s`;
+                revealOnScroll.observe(element);
+            });
+        });
     </script>
 </body>
 </html>
